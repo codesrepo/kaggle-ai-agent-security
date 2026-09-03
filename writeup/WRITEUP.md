@@ -4,8 +4,13 @@
 
 4,186 teams. Private **30.040**, public **136.450**.
 
-**Which notebook is which, so nothing below is confusing.** We selected two, both
-`CONFUSED_DEPUTY` attacks. Private ranking takes the better of the two:
+The whole competition reduces to one problem. Half the score comes from a guardrail you can measure
+a thousand times a day, and half comes from a guardrail you will never see, whose only property you
+know for certain is that it is *stricter*. Everything below is either **physics we measured on the
+public half**, or **how we spent that physics buying insurance on the private half**.
+
+**What we submitted.** Two notebooks were selected, both `CONFUSED_DEPUTY` attacks. Private ranking
+takes the better of the two:
 
 | notebook | public | private | role |
 |---|---:|---:|---|
@@ -15,11 +20,6 @@
 A third line of work, [**exfil v160**][exfil] (`EXFILTRATION`), produced the **136.450 public** figure
 but was not selected for private scoring, because we had evidence it would be blocked there — that
 story is Part 2.
-
-The whole competition reduces to one problem. Half the score comes from a guardrail you can measure
-a thousand times a day, and half comes from a guardrail you will never see, whose only property you
-know for certain is that it is *stricter*. Everything below is either **physics we measured on the
-public half**, or **how we spent that physics buying insurance on the private half**.
 
 ---
 
