@@ -731,12 +731,27 @@ Three things about this gap mattered more than anything else in the setup:
 
 ## Thanks
 
-Genuine thanks to the organizers. This is the most unusual competition we have entered — a red-team
-task where the objective is measurable, the defense is partly hidden, and the *cost model* is a first-
-class part of the problem rather than an implementation detail. The four-window replay design, the
-public/private guardrail split, and the per-cell novelty scoring made for a problem where the
-interesting work was almost never "find a jailbreak" and almost always "figure out what you are
-actually being charged for." Thank you for building it.
+Thank you to Manish Bhatt, Catherine Huang, Owen Vallis, Jess Chang, Sherin Mathews, Blake Gatto,
+Maria Cruz, Yao Yan and Martyna Plomecka for running this competition. Agent security is a very new
+area, and designing a realistic benchmark for it inside the constraints of a hosted platform is not
+easy — the four-window replay design, the public/private guardrail split, and the per-cell novelty
+scoring produced a problem where the interesting work was almost never "find a jailbreak" and almost
+always "figure out what you are actually being charged for." That is a much better problem, and a
+rarer one.
+
+Thanks also to the competitors who published. @xiaoz259's [1st-place solution][1st] and its
+open-sourced GCG workflow settled a question we had closed too early, and the discussion under it —
+helenkwok on optimizing the end-of-generation *set* rather than a single token id, and Yurnero on
+the context-exhaustion exit — supplied two of the four threads in Part 6. Both are credited there.
+The open discussion culture around this competition made it materially better.
+
+---
+
+## Citation
+
+> Manish Bhatt, Catherine Huang, Owen Vallis, Jess Chang, Sherin Mathews, Blake Gatto, Maria Cruz,
+> Yao Yan, and Martyna Plomecka. AI Agent Security - Multi-Step Tool Attacks.
+> <https://kaggle.com/competitions/ai-agent-security-multi-step-tool-attacks>, 2026. Kaggle.
 
 ---
 
