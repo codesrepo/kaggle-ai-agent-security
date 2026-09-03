@@ -7,13 +7,14 @@
 **Which notebook is which, so nothing below is confusing.** We selected two, both
 `CONFUSED_DEPUTY` attacks. Private ranking takes the better of the two:
 
-| | public | private | role |
+| notebook | public | private | role |
 |---|---:|---:|---|
-| **NB1 v11b** | 30.055 | **30.040** | **the score.** Tuned for maximum throughput. Everything in Parts 3–5 is about this notebook |
-| NB2 v14 | 19.340 | 19.325 | a **hedge** — deliberately slower, built to survive guardrail behaviours NB1 would not. It never became our score. Appendix A |
+| **[NB1 v11b][nb1]** | 30.055 | **30.040** | **the score.** Tuned for maximum throughput. Everything in Parts 3–5 is about this notebook |
+| [NB2 v14][nb2] | 19.340 | 19.325 | a **hedge** — deliberately slower, built to survive guardrail behaviours NB1 would not. It never became our score. Appendix A |
 
-A third line of work (`EXFILTRATION`) produced the **136.450 public** figure but was not selected for
-private scoring, because we had evidence it would be blocked there — that story is Part 2.
+A third line of work, [**exfil v160**][exfil] (`EXFILTRATION`), produced the **136.450 public** figure
+but was not selected for private scoring, because we had evidence it would be blocked there — that
+story is Part 2.
 
 The whole competition reduces to one problem. Half the score comes from a guardrail you can measure
 a thousand times a day, and half comes from a guardrail you will never see, whose only property you
@@ -739,12 +740,17 @@ actually being charged for." Thank you for building it.
 
 ---
 
-*Reproduction code for the measurement methodology — the pool screener, the ABBA harness, the
-token-floor pool builder and the coprime rotation scheduler — lives in `src/promptlab/` in this repository.
-The **harness** is model-agnostic: it reads whatever tokenizer the configured backend exposes. The
-**results are not.** Tokenization is a property of one model's vocabulary, and §5.5 is the proof —
-the single-token `@domain` lever was worth +2.92% on gpt and did not exist at all on gemma, which
-has zero such entries. Every pool has to be rebuilt, in context, against the model you will actually
-deploy against; the only portable part is the method.*
+## Code
 
+| | |
+|---|---|
+| **NB1 v11b** — the scoring notebook | [kaggle.com/code/outliar/agi-deputy-nb1-v11b-gpt2000-gem2000-sub][nb1] |
+| **NB2 v14** — the hedge | [kaggle.com/code/outliar/agi-deputy-nb2-v14-gpt2000-gem2000-sub][nb2] |
+| **exfil v160** — the public score | [kaggle.com/code/outliar/agi-exfil-160-gpt500-gem2000-sub][exfil] |
+| **Measurement harness + this write-up** | [github.com/codesrepo/kaggle-ai-agent-security][repo] |
+
+[nb1]: https://www.kaggle.com/code/outliar/agi-deputy-nb1-v11b-gpt2000-gem2000-sub
+[nb2]: https://www.kaggle.com/code/outliar/agi-deputy-nb2-v14-gpt2000-gem2000-sub
+[exfil]: https://www.kaggle.com/code/outliar/agi-exfil-160-gpt500-gem2000-sub
+[repo]: https://github.com/codesrepo/kaggle-ai-agent-security/tree/main
 [1st]: https://www.kaggle.com/competitions/ai-agent-security-multi-step-tool-attacks/writeups/1st-place-solution
