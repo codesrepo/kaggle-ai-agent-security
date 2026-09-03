@@ -1,8 +1,8 @@
-# Surviving Uncertainty
+# Measure What You Can, Survive What You Cannot
 
-**Maximizing survival chances when you cannot see what you are being scored against.**
+**Public #9, private #11 — building for a guardrail you never get to see.**
 
-Final: **#11 of 4,186 teams on the private leaderboard** (30.040), from **#9 public** (136.450).
+4,186 teams. Private **30.040**, public **136.450**.
 
 **Which notebook is which, so nothing below is confusing.** We selected two, both
 `CONFUSED_DEPUTY` attacks. Private ranking takes the better of the two:

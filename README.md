@@ -2,8 +2,8 @@
 
 **#11 of 4,186 teams** on the private leaderboard (30.040), from **#9 public** (136.450).
 
-This repository holds two things: the [**write-up**](writeup/WRITEUP.md), and the measurement
-harness the result was built with.
+This repository holds two things: the write-up — [**Measure What You Can, Survive What You
+Cannot**](writeup/WRITEUP.md) — and the measurement harness the result was built with.
 
 ```
 writeup/WRITEUP.md      the full solution write-up, with figures
