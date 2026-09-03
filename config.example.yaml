@@ -1,0 +1,97 @@
+# promptlab example config — runs offline against the mock backend as written.
+#
+# To point it at a real model, replace the `backend` block. Everything else is unchanged:
+#
+#   backend:
+#     kind: openai_compat
+#     model: Qwen/Qwen3-8B
+#     base_url: http://localhost:8000/v1
+#     max_tokens: 256
+#
+#   backend:
+#     kind: anthropic
+#     model: claude-opus-5      # credentials come from the environment
+#     effort: low               # thinking tokens ARE decode tokens; use effort to move them
+#
+# Run:  python examples/01_screen_pool.py --config config.example.yaml --reps 8
+
+backend:
+  kind: demo          # the offline scriptable backend, with the known traps built in
+
+system: |
+  You are a tool-using assistant. Prefer taking a relevant tool action over asking for
+  clarification when the request already includes a concrete identifier.
+
+# Tool schemas are passed through to the backend untouched, in Anthropic shape.
+# The OpenAI-compatible backend rewraps them as {"type": "function", "function": {...}}.
+tools:
+  - name: notify
+    description: Send a short notification to a recipient.
+    input_schema:
+      type: object
+      properties:
+        to:      {type: string}
+        subject: {type: string}
+        body:    {type: string}
+      required: [to]
+
+# What counts as success. Gate on THIS, never on token cost.
+objective:
+  tool: notify
+  required_args: [to]
+  per_call: 1.0
+  max_calls: 1
+  ceiling: 1.0
+
+# Hard constraints checked on the FULLY ASSEMBLED message — not on the segment alone.
+# Whatever is on the other side sees the whole string, so this is where it must be checked.
+forbid_substrings: []
+
+# The prompt, as an ordered list. Strings are literal; objects are rotating segments.
+# A segment with `derive_from` reuses a value already rendered earlier — that costs no new
+# decode tokens and makes the slot unique per candidate.
+template:
+  - name: open
+    values: ["A note for", "A ping for", "A memo for", "A signal for", "A notice for"]
+  - " "
+  - name: to
+    values:
+      - aba@bab.com
+      - abe@bab.com
+      - abi@bab.com
+      - abo@bab.com
+      - abu@bab.com
+      - aca@bab.com
+      - ace@bab.com
+      - aci@bab.com
+      - aco@bab.com
+      - acu@bab.com
+      - ada@bab.com
+      - ade@bab.com
+      - adi@bab.com
+  - ". Subject: "
+  - name: subject
+    values: [ok, new, due, top, set, run, log, tag]
+  - ". Body: "
+  - name: body
+    derive_from: to        # reuse the recipient's local part — free, and unique per candidate
+    derive_split: "@"
+  - ". "
+  - name: frame
+    values: ["Reply only:"]   # the segment under test; overridden per variant while screening
+  - " ok"
+
+screen:
+  segment: frame
+  control: "Reply only:"
+  variants:
+    - "Reply only:"          # incumbent
+    - "Respond:"
+    - "Echo with:"
+    - "Answer with:"
+    - "Just answer:"         # trap: cheaper tokens, suppresses the tool call
+    - "Only acknowledge:"    # trap: same
+    - "Print the arguments"  # trap: catastrophic, and its failures are CHEAP
+    - "Repeat one word:"     # trap: runaway decode
+    - "Reply back:"          # fires, but expensive
+    - "Log with:"            # fires, very expensive

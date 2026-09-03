@@ -1,0 +1,17 @@
+# The library core is stdlib-only — `import promptlab` needs nothing below.
+# These cover the examples, the tests, and rebuilding the write-up figures.
+
+# --- config-driven CLI (examples/01_screen_pool.py) ---
+pyyaml>=6.0
+
+# --- backends (install only what you use) ---
+requests>=2.28        # openai_compat: vLLM, llama.cpp, Ollama, TGI, LM Studio, OpenRouter
+anthropic>=0.40       # anthropic backend
+
+# --- development ---
+pytest>=7.4
+ruff>=0.5
+
+# --- rebuilding writeup/figures (writeup/make_figures.py) ---
+matplotlib>=3.8
+numpy>=1.26

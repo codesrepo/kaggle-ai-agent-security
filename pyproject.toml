@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "promptlab"
+version = "0.1.0"
+description = "Measure prompt variants honestly, then rotate them safely. Model-agnostic."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "CC-BY-4.0"
+keywords = ["llm", "prompt-engineering", "evaluation", "tool-use", "benchmarking"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Science/Research",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = []          # the core is stdlib-only, on purpose
+
+[project.optional-dependencies]
+http      = ["requests>=2.28"]
+anthropic = ["anthropic>=0.40"]
+yaml      = ["pyyaml>=6.0"]
+dev       = ["pytest>=7.4", "ruff>=0.5", "pyyaml>=6.0", "requests>=2.28"]
+all       = ["requests>=2.28", "anthropic>=0.40", "pyyaml>=6.0"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests", "examples"]
+# writeup/make_figures.py is a one-off plotting script, not library code
+extend-exclude = ["writeup"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]
