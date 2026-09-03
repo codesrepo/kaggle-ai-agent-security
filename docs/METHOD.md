@@ -2,8 +2,10 @@
 
 Every module in `promptlab` exists because a specific, measured mistake cost us score.
 This file records what those were, so the API choices are not arbitrary. Numbers are from
-a Kaggle AI-agent-security competition (two 20-30B open-weight models, tool-calling agents
-under a hard per-window time budget, 2,000 candidates per cell).
+the Kaggle *AI Agent Security — Multi-Step Tool Attacks* competition (two 20-30B open-weight
+models, tool-calling agents under a hard per-window time budget, 2,000 candidates per cell).
+
+Full narrative, with figures: **[Measure What You Can, Survive What You Cannot](https://www.kaggle.com/competitions/ai-agent-security-multi-step-tool-attacks/writeups/11th-place-solution-measure-what-you-can-survive)**.
 
 ---
 

@@ -19,6 +19,11 @@ classifiers = [
 ]
 dependencies = []          # the core is stdlib-only, on purpose
 
+[project.urls]
+Homepage = "https://github.com/codesrepo/kaggle-ai-agent-security"
+Repository = "https://github.com/codesrepo/kaggle-ai-agent-security"
+"Write-up" = "https://www.kaggle.com/competitions/ai-agent-security-multi-step-tool-attacks/writeups/11th-place-solution-measure-what-you-can-survive"
+
 [project.optional-dependencies]
 http      = ["requests>=2.28"]
 anthropic = ["anthropic>=0.40"]

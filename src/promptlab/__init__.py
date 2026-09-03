@@ -12,6 +12,9 @@ candidate phrasings for each slot, and a metric that is easy to fool. It gives y
   * `backends`  — one small protocol; mock, OpenAI-compatible, and Anthropic included
 
 Start with `examples/00_tutorial.py`, which runs end to end on the mock backend.
+
+Where it came from, and every number behind it:
+https://www.kaggle.com/competitions/ai-agent-security-multi-step-tool-attacks/writeups/11th-place-solution-measure-what-you-can-survive
 """
 
 from __future__ import annotations
