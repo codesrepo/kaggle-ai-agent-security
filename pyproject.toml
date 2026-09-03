@@ -37,8 +37,6 @@ addopts = "-q"
 [tool.ruff]
 line-length = 100
 src = ["src", "tests", "examples"]
-# writeup/make_figures.py is a one-off plotting script, not library code
-extend-exclude = ["writeup"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]
